@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Posts
  *
- * @ORM\Table(name="posts", indexes={@ORM\Index(name="fk_posts_users_idx", columns={"users_user_id"}), @ORM\Index(name="fk_posts_categories1_idx", columns={"categories_category_id"})})
+ * @ORM\Table(name="posts", indexes={@ORM\Index(name="fk_posts_categories1_idx", columns={"categoryid"}), @ORM\Index(name="fk_posts_users1_idx", columns={"userid"})})
  * @ORM\Entity
  */
 class Posts
@@ -15,60 +15,58 @@ class Posts
     /**
      * @var string
      *
-     * @ORM\Column(name="post_title", type="string", length=45, nullable=true)
+     * @ORM\Column(name="posttitle", type="string", length=45, nullable=true)
      */
-    private $postTitle;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="post_author_id", type="integer", nullable=true)
-     */
-    private $postAuthorId;
+    private $posttitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_content", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="postcontent", type="text", length=65535, nullable=true)
      */
-    private $postContent;
+    private $postcontent;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="post_date", type="date", nullable=true)
+     * @ORM\Column(name="postdate", type="date", nullable=true)
      */
-    private $postDate;
+    private $postdate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_cat", type="string", length=45, nullable=true)
+     * @ORM\Column(name="postimage", type="string", length=45, nullable=true)
      */
-    private $postCat;
+    private $postimage;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="comment_id", type="integer", nullable=true)
+     * @ORM\Column(name="isactive", type="integer", nullable=true)
      */
-    private $commentId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="post_image", type="string", length=45, nullable=true)
-     */
-    private $postImage;
+    private $isactive;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idposts", type="integer")
+     * @ORM\Column(name="postid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idposts;
+    private $postid;
+
+    /**
+     * @var \AppBundle\Entity\Categories
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categoryid", referencedColumnName="categoryid")
+     * })
+     */
+    private $categoryid;
 
     /**
      * @var \AppBundle\Entity\Users
@@ -77,125 +75,109 @@ class Posts
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Users")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="users_user_id", referencedColumnName="user_id")
+     *   @ORM\JoinColumn(name="userid", referencedColumnName="userid")
      * })
      */
-    private $usersUser;
-
-    /**
-     * @var \AppBundle\Entity\Categories
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categories_category_id", referencedColumnName="category_id")
-     * })
-     */
-    private $categoriesCategory;
+    private $userid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tags", mappedBy="postsposts")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tags", inversedBy="postsPostid")
+     * @ORM\JoinTable(name="posts_has_tags",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="posts_postid", referencedColumnName="postid"),
+     *     @ORM\JoinColumn(name="posts_categoryid", referencedColumnName="categoryid"),
+     *     @ORM\JoinColumn(name="posts_userid", referencedColumnName="userid")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tags_tagid", referencedColumnName="tagid")
+     *   }
+     * )
      */
-    private $tagsTag;
+    private $tagsTagid;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->tagsTag = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tagsTagid = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    function getPostTitle() {
-        return $this->postTitle;
-    }
-
-    function getPostAuthorId() {
-        return $this->postAuthorId;
-    }
-
-    function getPostContent() {
-        return $this->postContent;
-    }
-
-    function getPostDate(): \DateTime {
-        return $this->postDate;
-    }
-
-    function getPostCat() {
-        return $this->postCat;
-    }
-
-    function getCommentId() {
-        return $this->commentId;
-    }
-
-    function getPostImage() {
-        return $this->postImage;
-    }
-
-    function getIdposts() {
-        return $this->idposts;
-    }
-
-    function getUsersUser(): \AppBundle\Entity\Users {
-        return $this->usersUser;
-    }
-
-    function getCategoriesCategory(): \AppBundle\Entity\Categories {
-        return $this->categoriesCategory;
-    }
-
-    function getTagsTag(): \Doctrine\Common\Collections\Collection {
-        return $this->tagsTag;
-    }
-
-    function setPostTitle($postTitle) {
-        $this->postTitle = $postTitle;
-    }
-
-    function setPostAuthorId($postAuthorId) {
-        $this->postAuthorId = $postAuthorId;
-    }
-
-    function setPostContent($postContent) {
-        $this->postContent = $postContent;
-    }
-
-    function setPostDate(\DateTime $postDate) {
-        $this->postDate = $postDate;
-    }
-
-    function setPostCat($postCat) {
-        $this->postCat = $postCat;
-    }
-
-    function setCommentId($commentId) {
-        $this->commentId = $commentId;
-    }
-
-    function setPostImage($postImage) {
-        $this->postImage = $postImage;
-    }
-
-    function setIdposts($idposts) {
-        $this->idposts = $idposts;
-    }
-
-    function setUsersUser(\AppBundle\Entity\Users $usersUser) {
-        $this->usersUser = $usersUser;
-    }
-
-    function setCategoriesCategory(\AppBundle\Entity\Categories $categoriesCategory) {
-        $this->categoriesCategory = $categoriesCategory;
-    }
-
-    function setTagsTag(\Doctrine\Common\Collections\Collection $tagsTag) {
-        $this->tagsTag = $tagsTag;
-    }
-
-
     
+    function getPosttitle() {
+        return $this->posttitle;
+    }
+
+    function getPostcontent() {
+        return $this->postcontent;
+    }
+
+    function getPostdate(): \DateTime {
+        return $this->postdate;
+    }
+
+    function getPostimage() {
+        return $this->postimage;
+    }
+
+    function getIsactive() {
+        return $this->isactive;
+    }
+
+    function getPostid() {
+        return $this->postid;
+    }
+
+    function getCategoryid(): \AppBundle\Entity\Categories {
+        return $this->categoryid;
+    }
+
+    function getUserid(): \AppBundle\Entity\Users {
+        return $this->userid;
+    }
+
+    function getTagsTagid(): \Doctrine\Common\Collections\Collection {
+        return $this->tagsTagid;
+    }
+
+
+    function setPosttitle($posttitle) {
+        $this->posttitle = $posttitle;
+    }
+
+    function setPostcontent($postcontent) {
+        $this->postcontent = $postcontent;
+    }
+
+    function setPostdate(\DateTime $postdate) {
+        $this->postdate = $postdate;
+    }
+
+    function setPostimage($postimage) {
+        $this->postimage = $postimage;
+    }
+
+    function setIsactive($isactive) {
+        $this->isactive = $isactive;
+    }
+
+    function setPostid($postid) {
+        $this->postid = $postid;
+    }
+
+    function setCategoryid(\AppBundle\Entity\Categories $categoryid) {
+        $this->categoryid = $categoryid;
+    }
+
+    function setUserid(\AppBundle\Entity\Users $userid) {
+        $this->userid = $userid;
+    }
+
+    function setTagsTagid(\Doctrine\Common\Collections\Collection $tagsTagid) {
+        $this->tagsTagid = $tagsTagid;
+    }
+
 
 }
 

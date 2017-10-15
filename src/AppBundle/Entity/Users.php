@@ -7,116 +7,119 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Users
  *
- * @ORM\Table(name="users")
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_users_roles_idx", columns={"roleid"})})
  * @ORM\Entity
  */
 class Users
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="user_role", type="integer", nullable=false)
+     * @ORM\Column(name="userlogin", type="string", length=45, nullable=true)
      */
-    private $userRole;
+    private $userlogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userpaaword", type="string", length=45, nullable=true)
+     */
+    private $userpaaword;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="IsActive", type="integer", nullable=false)
+     * @ORM\Column(name="isactive", type="integer", nullable=true)
      */
     private $isactive;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_login", type="string", length=45, nullable=false)
+     * @ORM\Column(name="userimage", type="string", length=45, nullable=true)
      */
-    private $userLogin;
+    private $userimage;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_password", type="string", length=45, nullable=false)
+     * @ORM\Column(name="userdesc", type="string", length=255, nullable=true)
      */
-    private $userPassword;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user_image", type="string", length=45, nullable=true)
-     */
-    private $userImage;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user_desc", type="string", length=255, nullable=true)
-     */
-    private $userDesc;
+    private $userdesc;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Column(name="userid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $userId;
+    private $userid;
 
-    function getUserRole() {
-        return $this->userRole;
+    /**
+     * @var \AppBundle\Entity\Roles
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Roles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="roleid", referencedColumnName="roleid")
+     * })
+     */
+    private $roleid;
+
+    function getUserlogin() {
+        return $this->userlogin;
+    }
+
+    function getUserpaaword() {
+        return $this->userpaaword;
     }
 
     function getIsactive() {
         return $this->isactive;
     }
 
-    function getUserLogin() {
-        return $this->userLogin;
+    function getUserimage() {
+        return $this->userimage;
     }
 
-    function getUserPassword() {
-        return $this->userPassword;
+    function getUserdesc() {
+        return $this->userdesc;
     }
 
-    function getUserImage() {
-        return $this->userImage;
+    function getUserid() {
+        return $this->userid;
     }
 
-    function getUserDesc() {
-        return $this->userDesc;
+    function getRoleid(): \AppBundle\Entity\Roles {
+        return $this->roleid;
     }
 
-    function getUserId() {
-        return $this->userId;
+    function setUserlogin($userlogin) {
+        $this->userlogin = $userlogin;
     }
 
-    function setUserRole($userRole) {
-        $this->userRole = $userRole;
+    function setUserpaaword($userpaaword) {
+        $this->userpaaword = $userpaaword;
     }
 
     function setIsactive($isactive) {
         $this->isactive = $isactive;
     }
 
-    function setUserLogin($userLogin) {
-        $this->userLogin = $userLogin;
+    function setUserimage($userimage) {
+        $this->userimage = $userimage;
     }
 
-    function setUserPassword($userPassword) {
-        $this->userPassword = $userPassword;
+    function setUserdesc($userdesc) {
+        $this->userdesc = $userdesc;
     }
 
-    function setUserImage($userImage) {
-        $this->userImage = $userImage;
+    function setUserid($userid) {
+        $this->userid = $userid;
     }
 
-    function setUserDesc($userDesc) {
-        $this->userDesc = $userDesc;
-    }
-
-    function setUserId($userId) {
-        $this->userId = $userId;
+    function setRoleid(\AppBundle\Entity\Roles $roleid) {
+        $this->roleid = $roleid;
     }
 
 

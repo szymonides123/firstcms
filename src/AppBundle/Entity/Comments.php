@@ -7,29 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comments
  *
- * @ORM\Table(name="comments", indexes={@ORM\Index(name="fk_comments_users1_idx", columns={"users_user_id"})})
+ * @ORM\Table(name="comments", indexes={@ORM\Index(name="fk_comments_users1_idx", columns={"userid"})})
  * @ORM\Entity
  */
 class Comments
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="user_id", type="integer", nullable=true)
-     */
-    private $userId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="com_active", type="integer", nullable=true)
-     */
-    private $comActive;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="com_content", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="com_content", type="string", length=500, nullable=true)
      */
     private $comContent;
 
@@ -41,32 +27,31 @@ class Comments
     private $comDate;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="isactive", type="string", length=45, nullable=true)
+     */
+    private $isactive;
+
+    /**
      * @var integer
      *
-     * @ORM\Column(name="comment_id", type="integer")
+     * @ORM\Column(name="commentid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $commentId;
+    private $commentid;
 
     /**
      * @var \AppBundle\Entity\Users
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Users")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="users_user_id", referencedColumnName="user_id")
+     *   @ORM\JoinColumn(name="userid", referencedColumnName="userid")
      * })
      */
-    private $usersUser;
-
-    function getUserId() {
-        return $this->userId;
-    }
-
-    function getComActive() {
-        return $this->comActive;
-    }
-
+    private $userid;
+    
     function getComContent() {
         return $this->comContent;
     }
@@ -75,20 +60,16 @@ class Comments
         return $this->comDate;
     }
 
-    function getCommentId() {
-        return $this->commentId;
+    function getIsactive() {
+        return $this->isactive;
     }
 
-    function getUsersUser(): \AppBundle\Entity\Users {
-        return $this->usersUser;
+    function getCommentid() {
+        return $this->commentid;
     }
 
-    function setUserId($userId) {
-        $this->userId = $userId;
-    }
-
-    function setComActive($comActive) {
-        $this->comActive = $comActive;
+    function getUserid(): \AppBundle\Entity\Users {
+        return $this->userid;
     }
 
     function setComContent($comContent) {
@@ -99,13 +80,18 @@ class Comments
         $this->comDate = $comDate;
     }
 
-    function setCommentId($commentId) {
-        $this->commentId = $commentId;
+    function setIsactive($isactive) {
+        $this->isactive = $isactive;
     }
 
-    function setUsersUser(\AppBundle\Entity\Users $usersUser) {
-        $this->usersUser = $usersUser;
+    function setCommentid($commentid) {
+        $this->commentid = $commentid;
     }
+
+    function setUserid(\AppBundle\Entity\Users $userid) {
+        $this->userid = $userid;
+    }
+
 
 
 }

@@ -15,67 +15,56 @@ class Tags
     /**
      * @var string
      *
-     * @ORM\Column(name="tag", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tagname", type="string", length=45, nullable=true)
      */
-    private $tag;
+    private $tagname;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tag_id", type="integer")
+     * @ORM\Column(name="tagid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $tagId;
+    private $tagid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Posts", inversedBy="tagsTag")
-     * @ORM\JoinTable(name="tags_has_posts",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="tags_tag_id", referencedColumnName="tag_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="posts_idposts", referencedColumnName="idposts"),
-     *     @ORM\JoinColumn(name="posts_users_user_id", referencedColumnName="users_user_id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Posts", mappedBy="tagsTagid")
      */
-    private $postsposts;
+    private $postsPostid;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->postsposts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postsPostid = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
-    function getTag() {
-        return $this->tag;
-    }
-
-    function getTagId() {
-        return $this->tagId;
+    function getTagname() {
+        return $this->tagname;
     }
 
-    function getPostsposts(): \Doctrine\Common\Collections\Collection {
-        return $this->postsposts;
+    function getTagid() {
+        return $this->tagid;
     }
 
-    function setTag($tag) {
-        $this->tag = $tag;
+    function getPostsPostid(): \Doctrine\Common\Collections\Collection {
+        return $this->postsPostid;
     }
 
-    function setTagId($tagId) {
-        $this->tagId = $tagId;
+    function setTagname($tagname) {
+        $this->tagname = $tagname;
     }
 
-    function setPostsposts(\Doctrine\Common\Collections\Collection $postsposts) {
-        $this->postsposts = $postsposts;
+    function setTagid($tagid) {
+        $this->tagid = $tagid;
     }
 
+    function setPostsPostid(\Doctrine\Common\Collections\Collection $postsPostid) {
+        $this->postsPostid = $postsPostid;
+    }
 
 
 }

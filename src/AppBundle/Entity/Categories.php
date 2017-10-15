@@ -15,34 +15,34 @@ class Categories
     /**
      * @var string
      *
-     * @ORM\Column(name="category_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="categoryname", type="string", length=45, nullable=true)
      */
-    private $categoryName;
+    private $categoryname;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="category_id", type="integer")
+     * @ORM\Column(name="categoryid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $categoryId;
+    private $categoryid;
 
-    function getCategoryName() {
-        return $this->categoryName;
+    function getCategoryname() {
+        return $this->categoryname;
     }
 
-    function getCategoryId() {
-        return $this->categoryId;
+    function getCategoryid() {
+        return $this->categoryid;
+    }
+    function setCategoryname($categoryname) {
+        $this->categoryname = $categoryname;
     }
 
-    function setCategoryName($categoryName) {
-        $this->categoryName = $categoryName;
+    function setCategoryid($categoryid) {
+        $this->categoryid = $categoryid;
     }
 
-    function setCategoryId($categoryId) {
-        $this->categoryId = $categoryId;
-    }
 
 
 }
