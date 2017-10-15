@@ -8,15 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Posts;
 
 
-class BlogController extends Controller
+class PostController extends Controller
 {
     
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id)
     {
         $posts = $this->getDoctrine()
                 ->getRepository(Posts::class)
-                ->findPosts();
-        return $this->render('default/index.html.twig',
+                ->findPostsbyid($id);
+        return $this->render('default/post.html.twig',
                 array('posts' => $posts));
     }
 }

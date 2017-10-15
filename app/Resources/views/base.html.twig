@@ -12,10 +12,11 @@
 
     <!-- Bootstrap Core CSS -->
     {% block stylesheets %}
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/blog-home.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/blog-home.css')}}" />
     {% endblock %}        
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -55,12 +56,9 @@
             <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col-md-8">
+            
 
-                <h1 class="page-header">
-                    Nazwa Bloga!
-                    <small>Jakieś śmieszne motto</small>
-                </h1>
+                
         {% block body %}{% endblock %}
                <!-- Pager -->
                
@@ -122,7 +120,7 @@
                     <h4>Side Widget Well</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
-
+            </div>
             </div>
 
         <hr>
@@ -138,13 +136,15 @@
             <!-- /.row -->
         </footer>
         </div>
-        {% block javascripts %}
-            <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+                    <!-- jQuery -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
         
+        {% block javascripts %}
+        <script src={{asset('js/jquery.js')}}></script>
+        <script src={{asset('js/bootstrap.min.js')}}></script>
+
+            
         {% endblock %}
+
     </body>
 </html>
