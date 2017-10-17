@@ -12,6 +12,9 @@ $collection->add('blog_post', new Route('/post/{id}', array(
 ), array(
     'id' => '\d+'
 )));
+$collection->add('dupa', new Route('/sentence', array(
+    '_controller' => 'AppBundle:Sentence:index',
+)));
 
 
 return $collection;

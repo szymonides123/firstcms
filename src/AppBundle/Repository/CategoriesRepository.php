@@ -1,0 +1,14 @@
+<?php
+
+namespace AppBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+
+
+
+class CategoriesRepository extends EntityRepository
+{
+
+ 
+}

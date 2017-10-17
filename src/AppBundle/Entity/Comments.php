@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Comments
  *
  * @ORM\Table(name="comments", indexes={@ORM\Index(name="fk_comments_users1_idx", columns={"userid"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentsRepository")
  */
 class Comments
 {
@@ -52,6 +52,29 @@ class Comments
      */
     private $userid;
     
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="nested_comid", type="integer")
+      */
+    
+    private $nestedComid;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="postid", type="integer")
+    */
+    
+    private $postid;
+    
+    function getpostid() {
+        return $this->postid;
+    }         
+    function getNestedComid() {
+        return $this->nestedComid;
+    }
+            
     function getComContent() {
         return $this->comContent;
     }
@@ -71,7 +94,14 @@ class Comments
     function getUserid(): \AppBundle\Entity\Users {
         return $this->userid;
     }
-
+    function setpostid($postid) {
+        $this->postid = $postid;
+    }
+    
+    function setNestedComid($nestedComid) {
+        $this->nestedComid = $nestedComid;
+    }
+    
     function setComContent($comContent) {
         $this->comContent = $comContent;
     }

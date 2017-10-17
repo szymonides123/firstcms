@@ -2,39 +2,21 @@
 
 {% block body %}
 
-<div class="col-lg-8">
+    <div class="col-lg-8">
                 {% for post in posts %} 
-                <!-- Title -->
                 <h1>{{post.posttitle}}</h1>   
-                
-                
 
-                <!-- Author -->
                 <p class="lead">
                     by <a href="#">{{post.userid.userlogin}}</a>
                 </p>
-
                 <hr>
-
-                <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.postdate|date('Y-m-d H:i:s') }}</p>
-
                 <hr>
-
-                <!-- Preview Image -->
                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
                 <hr>
-
-                <!-- Post Content -->
                 <p>{{post.postcontent}}</p>
-                
-
                 <hr>
                 {% endfor %}
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
                     <form role="form">
@@ -44,48 +26,24 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-
                 <hr>
 
-                <!-- Posted Comments -->
-
-                <!-- Comment -->
+        {% for comment in comments %} 
+            {% if comment.nestedComid == null %}
                 <div class="media">
-                    <a class="pull-left" href="#">
+{#                    <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                    </a>#}
+                    <div class="media22">
+                        <h4 class="media-heading"><span style="color: red;">{{comment.userid.userlogin}}</span>
+                            <small>{{comment.comdate|date('Y-m-d H:i:s')}} </small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
+                        {{ comment.comContent }}
+                    
+               
                 </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
+                   </div> 
+            {% endif %}
+        {% endfor %}
         
-    {% endblock %}
+{% endblock %}
