@@ -16,7 +16,12 @@ class BlogController extends Controller
         $posts = $this->getDoctrine()
                 ->getRepository(Posts::class)
                 ->findPostse($id);
+        $num = $this->getDoctrine()
+                ->getRepository(Posts::class)
+                ->countpost();
         return $this->render('default/index.html.twig',
-                array('posts' => $posts));
+                array('posts' => $posts,
+                      'num' => $num
+                ));
     }
 }

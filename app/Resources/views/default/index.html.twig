@@ -28,11 +28,16 @@
  
     {% endfor %}
         <ul class="pager">
+            {% if app.request.get('id') > 1 %}
             <li class="previous">
                 <a href="{{path('blog_index',{'id': app.request.get('id')-1}) }}">&larr; Older</a>
             </li>
+            {% endif %}
+            {% if app.request.get('id')*3 < num[0]['num'] %}
             <li class="next">
                 <a href="{{path('blog_index',{'id': app.request.get('id')+1 }) }}">Newer &rarr;</a>
             </li>
+            {% endif %}
         </ul>
+
     {% endblock %}

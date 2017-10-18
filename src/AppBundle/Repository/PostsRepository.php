@@ -35,5 +35,16 @@ class PostsRepository extends EntityRepository
         return $limitpost;
         
     }
+        public function countpost(){
+
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(postid) as num FROM posts');
+        $statement->execute();
+        $postnumber = $statement->fetchAll();
+        
+        return $postnumber;
+        
+    }
     
 }
