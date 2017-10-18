@@ -13,7 +13,7 @@
             <a href="#">{{post.posttitle}}</a>
         </h2>
         <p class="lead">
-            by <a href="index.php">{{post.userid.userlogin}}</a>
+            by <a href="index.php">{{post.userlogin}}</a>
         </p>
         <p><span class="glyphicon glyphicon-time"></span> {{post.postdate|date('Y-m-d H:i:s') }}</p>
         <hr>
@@ -29,10 +29,10 @@
     {% endfor %}
         <ul class="pager">
             <li class="previous">
-                <a href="#">&larr; Older</a>
+                <a href="{{path('blog_index',{'id': app.request.get('id')-1}) }}">&larr; Older</a>
             </li>
             <li class="next">
-                <a href="#">Newer &rarr;</a>
+                <a href="{{path('blog_index',{'id': app.request.get('id')+1 }) }}">Newer &rarr;</a>
             </li>
         </ul>
     {% endblock %}

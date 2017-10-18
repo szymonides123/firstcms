@@ -11,11 +11,11 @@ use AppBundle\Entity\Posts;
 class BlogController extends Controller
 {
     
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id)
     {
         $posts = $this->getDoctrine()
                 ->getRepository(Posts::class)
-                ->findPosts();
+                ->findPostse($id);
         return $this->render('default/index.html.twig',
                 array('posts' => $posts));
     }
