@@ -10,7 +10,7 @@
     {% for post in posts %}
                     
         <h2>
-            <a href="#">{{post.posttitle}}</a>
+            <a href="{{path('blog_post',{'id': post.postid }) }}">{{post.posttitle}}</a>
         </h2>
         <p class="lead">
             by <a href="index.php">{{post.userlogin}}</a>
@@ -22,11 +22,12 @@
         <div class="last-line">
             {{post.postcontent}}
         </div>
-        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="btn btn-primary" href="{{path('blog_post',{'id': post.postid }) }}">Czytaj więcej <span class="glyphicon glyphicon-chevron-right"></span></a>
 
         <hr>
  
     {% endfor %}
+        {% if num[0]['num'] is defined %}
         <ul class="pager">
             {% if app.request.get('id') > 1 %}
             <li class="previous">
@@ -37,7 +38,7 @@
             <li class="next">
                 <a href="{{path('blog_index',{'id': app.request.get('id')+1 }) }}">Newer &rarr;</a>
             </li>
-            {% endif %}
+        {% endif %}
         </ul>
-
+            {% endif %}
     {% endblock %}

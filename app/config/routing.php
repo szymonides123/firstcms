@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Route;
 $collection = new RouteCollection();
 $collection->add('blog_index', new Route('/{id}', array(
     '_controller' => 'AppBundle:Blog:index',
-    'page' => 1,
+    'id' => 1,
     ), array(
     'id' => '\d+'
 )));
@@ -18,6 +18,16 @@ $collection->add('blog_post', new Route('/post/{id}', array(
 $collection->add('dupa', new Route('/sentence', array(
     '_controller' => 'AppBundle:Sentence:index',
 )));
-
+$collection->add('blog_cat', new Route('/cat/{id}', array(
+    '_controller' => 'AppBundle:Blog:show',
+    ), array(
+    'id' => '\d+'
+)));
+$collection->add('blog_search', new Route('/search/{id}', array(
+    '_controller' => 'AppBundle:Blog:search',
+    'id' => 1,
+    ), array(
+    'id' => '\d+'
+)));
 
 return $collection;
