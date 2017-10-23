@@ -28,20 +28,20 @@ class Categories
      */
     private $categoryid;
 
-    function getCategoryname() {
-        return $this->categoryname;
-    }
-
-    function getCategoryid() {
-        return $this->categoryid;
-    }
-    function setCategoryname($categoryname) {
-        $this->categoryname = $categoryname;
-    }
-
-    function setCategoryid($categoryid) {
-        $this->categoryid = $categoryid;
-    }
+//    function getCategoryname() {
+//        return $this->categoryname;
+//    }
+//
+//    function getCategoryid() {
+//        return $this->categoryid;
+//    }
+//    function setCategoryname($categoryname) {
+//        $this->categoryname = $categoryname;
+//    }
+//
+//    function setCategoryid($categoryid) {
+//        $this->categoryid = $categoryid;
+//    }
 
 
 

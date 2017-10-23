@@ -14,7 +14,7 @@ class CommentsRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT c FROM AppBundle:Comments c JOIN AppBundle:Users u WITH c.userid = u.userid WHERE c.postid = :id'
+                'SELECT c FROM AppBundle:Comments c JOIN AppBundle:User u WITH c.userid = u.id WHERE c.postid = :id'
             )->setParameter(':id', $id)->getResult();
             
     }
@@ -22,7 +22,7 @@ class CommentsRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT c FROM AppBundle:Comments c JOIN AppBundle:Users u WITH c.userid = u.userid WHERE c.nestedComid = :id'
+                'SELECT c FROM AppBundle:Comments c JOIN AppBundle:User u WITH c.userid = u.id WHERE c.nestedComid = :id'
             )->setParameter(':id', $id)->getResult();
             
     }

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="sentences")
  * @ORM\Entity
  */
-class Categories
+class Sentences
 {
     /**
      * @var string
@@ -28,20 +28,20 @@ class Categories
      */
     private $sentenceid;
 
-    function getSentencecontent() {
-        return $this->sentencecontent;
-    }
-
-    function getSentenceid() {
-        return $this->sentenceid;
-    }
-    function setSentencecontent($sentencecontent) {
-        $this->sentencecontent = $sentencecontent;
-    }
-
-    function setSentenceid($sentenceid) {
-        $this->sentenceid = $sentenceid;
-    }
+//    function getSentencecontent() {
+//        return $this->sentencecontent;
+//    }
+//
+//    function getSentenceid() {
+//        return $this->sentenceid;
+//    }
+//    function setSentencecontent($sentencecontent) {
+//        $this->sentencecontent = $sentencecontent;
+//    }
+//
+//    function setSentenceid($sentenceid) {
+//        $this->sentenceid = $sentenceid;
+//    }
 
 
 

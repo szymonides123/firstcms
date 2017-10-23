@@ -73,9 +73,9 @@ class Posts
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Users")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="userid", referencedColumnName="userid")
+     *   @ORM\JoinColumn(name="userid", referencedColumnName="id")
      * })
      */
     private $userid;
@@ -105,78 +105,78 @@ class Posts
         $this->tagsTagid = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    function getPosttitle() {
-        return $this->posttitle;
-    }
-
-    function getPostcontent() {
-        return $this->postcontent;
-    }
-
-    function getPostdate(): \DateTime {
-        return $this->postdate;
-    }
-
-    function getPostimage() {
-        return $this->postimage;
-    }
-
-    function getIsactive() {
-        return $this->isactive;
-    }
-
-    function getPostid() {
-        return $this->postid;
-    }
-
-    function getCategoryid(): \AppBundle\Entity\Categories {
-        return $this->categoryid;
-    }
-
-    function getUserid(): \AppBundle\Entity\Users {
-        return $this->userid;
-    }
-
-    function getTagsTagid(): \Doctrine\Common\Collections\Collection {
-        return $this->tagsTagid;
-    }
-
-
-    function setPosttitle($posttitle) {
-        $this->posttitle = $posttitle;
-    }
-
-    function setPostcontent($postcontent) {
-        $this->postcontent = $postcontent;
-    }
-
-    function setPostdate(\DateTime $postdate) {
-        $this->postdate = $postdate;
-    }
-
-    function setPostimage($postimage) {
-        $this->postimage = $postimage;
-    }
-
-    function setIsactive($isactive) {
-        $this->isactive = $isactive;
-    }
-
-    function setPostid($postid) {
-        $this->postid = $postid;
-    }
-
-    function setCategoryid(\AppBundle\Entity\Categories $categoryid) {
-        $this->categoryid = $categoryid;
-    }
-
-    function setUserid(\AppBundle\Entity\Users $userid) {
-        $this->userid = $userid;
-    }
-
-    function setTagsTagid(\Doctrine\Common\Collections\Collection $tagsTagid) {
-        $this->tagsTagid = $tagsTagid;
-    }
+//    function getPosttitle() {
+//        return $this->posttitle;
+//    }
+//
+//    function getPostcontent() {
+//        return $this->postcontent;
+//    }
+//
+//    function getPostdate(): \DateTime {
+//        return $this->postdate;
+//    }
+//
+//    function getPostimage() {
+//        return $this->postimage;
+//    }
+//
+//    function getIsactive() {
+//        return $this->isactive;
+//    }
+//
+//    function getPostid() {
+//        return $this->postid;
+//    }
+//
+//    function getCategoryid(): \AppBundle\Entity\Categories {
+//        return $this->categoryid;
+//    }
+//
+//    function getUserid(): \AppBundle\Entity\Users {
+//        return $this->userid;
+//    }
+//
+//    function getTagsTagid(): \Doctrine\Common\Collections\Collection {
+//        return $this->tagsTagid;
+//    }
+//
+//
+//    function setPosttitle($posttitle) {
+//        $this->posttitle = $posttitle;
+//    }
+//
+//    function setPostcontent($postcontent) {
+//        $this->postcontent = $postcontent;
+//    }
+//
+//    function setPostdate(\DateTime $postdate) {
+//        $this->postdate = $postdate;
+//    }
+//
+//    function setPostimage($postimage) {
+//        $this->postimage = $postimage;
+//    }
+//
+//    function setIsactive($isactive) {
+//        $this->isactive = $isactive;
+//    }
+//
+//    function setPostid($postid) {
+//        $this->postid = $postid;
+//    }
+//
+//    function setCategoryid(\AppBundle\Entity\Categories $categoryid) {
+//        $this->categoryid = $categoryid;
+//    }
+//
+//    function setUserid(\AppBundle\Entity\Users $userid) {
+//        $this->userid = $userid;
+//    }
+//
+//    function setTagsTagid(\Doctrine\Common\Collections\Collection $tagsTagid) {
+//        $this->tagsTagid = $tagsTagid;
+//    }
 
 
 }

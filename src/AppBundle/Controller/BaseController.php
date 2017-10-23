@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace AppBundle\Controller;
 
@@ -11,7 +11,15 @@ use AppBundle\Entity\Categories;
 class BaseController extends Controller
 {
     
-    public function indexAction()
+    public function categoryAction()
+    {
+        $categories = $this->getDoctrine()
+                ->getRepository(Categories::class)
+                ->findAll();
+        return $this->render('default/menu.html.twig',
+                array('categories' => $categories));
+    }
+    public function usersAction()
     {
         $categories = $this->getDoctrine()
                 ->getRepository(Categories::class)

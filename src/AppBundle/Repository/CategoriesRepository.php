@@ -9,6 +9,5 @@ use Doctrine\ORM\EntityRepository;
 
 class CategoriesRepository extends EntityRepository
 {
-
- 
+    
 }
