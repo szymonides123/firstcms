@@ -7,7 +7,7 @@
                 <h1>{{post.posttitle}}</h1>   
 
                 <p class="lead">
-                    by <a href="#">{{post.userid.userlogin}}</a>
+                    by <a href="#">{{post.username}}</a>
                 </p>
                 <hr>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.postdate|date('Y-m-d H:i:s') }}</p>
@@ -18,32 +18,27 @@
                 <hr>
                 {% endfor %}
                 <div class="well">
-                    <h4>Leave a Comment:</h4>
+                    <h4>Zostaw komentarz:</h4>
                     <form role="form">
                         <div class="form-group">
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Wyślij</button>
                     </form>
                 </div>
                 <hr>
 
         {% for comment in comments %} 
-            {% if comment.nestedComid == null %}
+
                 <div class="media">
-{#                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>#}
                     <div class="media22">
-                        <h4 class="media-heading"><span style="color: red;">{{comment.userid.userlogin}}</span>
-                            <small>{{comment.comdate|date('Y-m-d H:i:s')}} </small>
+                        <h4 class="media-heading"><span style="color: red;">{{comment.username}}</span>
+                            <small>{{comment.com_date|date('Y-m-d H:i:s')}} </small>
                         </h4>
-                        {{ comment.comContent }}
-                    
-               
+                        {{ comment.com_content }}
                 </div>
                    </div> 
-            {% endif %}
+
         {% endfor %}
         
 {% endblock %}

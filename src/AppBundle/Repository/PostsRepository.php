@@ -12,10 +12,15 @@ class PostsRepository extends EntityRepository
     
     public function findPostsbyid($id)
     {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT p FROM AppBundle:Posts p JOIN AppBundle:Categories c WITH p.categoryid = c.categoryid JOIN AppBundle:User u WITH p.userid = u.id WHERE p.postid = :id'
-            )->setParameter(':id', $id)->getResult();
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT * FROM posts p JOIN categories c ON p.categoryid = c.categoryid JOIN fos_user u ON p.userid = u.id WHERE p.postid = :id ');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        $post = $statement->fetchAll();
+        
+        return $post;
+            
             
     }
     public function findPostsbytitlename($name)

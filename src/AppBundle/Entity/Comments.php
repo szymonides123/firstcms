@@ -68,59 +68,59 @@ class Comments
     
     private $postid;
     
-//    function getpostid() {
-//        return $this->postid;
-//    }         
-//    function getNestedComid() {
-//        return $this->nestedComid;
-//    }
-//            
-//    function getComContent() {
-//        return $this->comContent;
-//    }
-//
-//    function getComDate(): \DateTime {
-//        return $this->comDate;
-//    }
-//
-//    function getIsactive() {
-//        return $this->isactive;
-//    }
-//
-//    function getCommentid() {
-//        return $this->commentid;
-//    }
-//
-//    function getUserid(): \AppBundle\Entity\Users {
-//        return $this->userid;
-//    }
-//    function setpostid($postid) {
-//        $this->postid = $postid;
-//    }
-//    
-//    function setNestedComid($nestedComid) {
-//        $this->nestedComid = $nestedComid;
-//    }
-//    
-//    function setComContent($comContent) {
-//        $this->comContent = $comContent;
-//    }
-//
-//    function setComDate(\DateTime $comDate) {
-//        $this->comDate = $comDate;
-//    }
-//
-//    function setIsactive($isactive) {
-//        $this->isactive = $isactive;
-//    }
-//
-//    function setCommentid($commentid) {
-//        $this->commentid = $commentid;
-//    }
-//
-//    function setUserid(\AppBundle\Entity\Users $userid) {
-//        $this->userid = $userid;
-//    }
+    function getpostid() {
+        return $this->postid;
+    }         
+    function getNestedComid() {
+        return $this->nestedComid;
+    }
+            
+    function getComContent() {
+        return $this->comContent;
+    }
+
+    function getComDate(): \DateTime {
+        return $this->comDate;
+    }
+
+    function getIsactive() {
+        return $this->isactive;
+    }
+
+    function getCommentid() {
+        return $this->commentid;
+    }
+
+    function getUserid(): \AppBundle\Entity\Users {
+        return $this->userid;
+    }
+    function setpostid($postid) {
+        $this->postid = $postid;
+    }
+    
+    function setNestedComid($nestedComid) {
+        $this->nestedComid = $nestedComid;
+    }
+    
+    function setComContent($comContent) {
+        $this->comContent = $comContent;
+    }
+
+    function setComDate(\DateTime $comDate) {
+        $this->comDate = $comDate;
+    }
+
+    function setIsactive($isactive) {
+        $this->isactive = $isactive;
+    }
+
+    function setCommentid($commentid) {
+        $this->commentid = $commentid;
+    }
+
+    function setUserid(\AppBundle\Entity\Users $userid) {
+        $this->userid = $userid;
+    }
 
 
 

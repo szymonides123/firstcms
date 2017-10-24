@@ -37,6 +37,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 {{ render(controller('AppBundle:Base:category')) }}
+                ////////////////////////////////////////////////////////
+                <div style="float:right;">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a class="navbar-brand"  href="/profile"> {{ app.user.username|upper }}</a>
+                <a class="navbar-brand" href="{{ path('fos_user_security_logout') }}"> 
+                    Wyloguj
+                </a>   
+                
+                
+            {% else %}
+                <a class="navbar-brand" href="{{ path('fos_user_security_login') }}">Logowanie</a>
+                
+                <a class="navbar-brand" href="{{ path('fos_user_resetting_request') }}">Zapomniałeś hasła?</a>
+                
+                <a class="navbar-brand" href="{{ path('fos_user_registration_register') }}">Rejestracja</a>                
+            {% endif %}
+                </div>
+                ////////////////////////////////////////////////////////
+                
             </div>
             <!-- /.navbar-collapse -->
         </div>

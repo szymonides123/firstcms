@@ -38,33 +38,33 @@ class Tags
     /**
      * Constructor
      */
-//    public function __construct()
-//    {
-//        $this->postsPostid = new \Doctrine\Common\Collections\ArrayCollection();
-//    }
-//    function getTagname() {
-//        return $this->tagname;
-//    }
-//
-//    function getTagid() {
-//        return $this->tagid;
-//    }
-//
-//    function getPostsPostid(): \Doctrine\Common\Collections\Collection {
-//        return $this->postsPostid;
-//    }
-//
-//    function setTagname($tagname) {
-//        $this->tagname = $tagname;
-//    }
-//
-//    function setTagid($tagid) {
-//        $this->tagid = $tagid;
-//    }
-//
-//    function setPostsPostid(\Doctrine\Common\Collections\Collection $postsPostid) {
-//        $this->postsPostid = $postsPostid;
-//    }
+    public function __construct()
+    {
+        $this->postsPostid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    function getTagname() {
+        return $this->tagname;
+    }
+
+    function getTagid() {
+        return $this->tagid;
+    }
+
+    function getPostsPostid(): \Doctrine\Common\Collections\Collection {
+        return $this->postsPostid;
+    }
+
+    function setTagname($tagname) {
+        $this->tagname = $tagname;
+    }
+
+    function setTagid($tagid) {
+        $this->tagid = $tagid;
+    }
+
+    function setPostsPostid(\Doctrine\Common\Collections\Collection $postsPostid) {
+        $this->postsPostid = $postsPostid;
+    }
 
 
 }

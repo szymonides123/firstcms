@@ -13,7 +13,7 @@
             <a href="{{path('blog_post',{'id': post.postid }) }}">{{post.posttitle}}</a>
         </h2>
         <p class="lead">
-            by <a href="index.php">{{post.userlogin}}</a>
+            by <a href="index.php">{{post.username}}</a>
         </p>
         <p><span class="glyphicon glyphicon-time"></span> {{post.postdate|date('Y-m-d H:i:s') }}</p>
         <hr>

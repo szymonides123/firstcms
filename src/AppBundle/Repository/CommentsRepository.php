@@ -11,19 +11,27 @@ class CommentsRepository extends EntityRepository
 {
 
     public function findCommentsById($id)
-    {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT c FROM AppBundle:Comments c JOIN AppBundle:User u WITH c.userid = u.id WHERE c.postid = :id'
-            )->setParameter(':id', $id)->getResult();
-            
+    {   
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT * FROM comments c JOIN fos_user u ON c.userid = u.id WHERE c.postid = :id');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        $comments = $statement->fetchAll();
+        
+        return $comments;
+   
     }
     public function findNestedById($id)
     {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT c FROM AppBundle:Comments c JOIN AppBundle:User u WITH c.userid = u.id WHERE c.nestedComid = :id'
-            )->setParameter(':id', $id)->getResult();
-            
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT * FROM comments c JOIN fos_user u ON c.userid = u.id WHERE c.nested_comid = :id');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        $comments = $statement->fetchAll();
+        
+        return $comments;
+
     }
 }
