@@ -13,11 +13,11 @@
             <a href="{{path('blog_post',{'id': post.postid }) }}">{{post.posttitle}}</a>
         </h2>
         <p class="lead">
-            by <a href="index.php">{{post.username}}</a>
+            by <span style="color: blue;"> {{post.username}}</span>
         </p>
         <p><span class="glyphicon glyphicon-time"></span> {{post.postdate|date('Y-m-d H:i:s') }}</p>
         <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <img class="img-responsive" src="{{asset('img/'~ post.postimage ~ '.jpg')}}" alt="">
         <hr>
         <div class="last-line">
             {{post.postcontent}}

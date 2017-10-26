@@ -12,28 +12,31 @@
                 <hr>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.postdate|date('Y-m-d H:i:s') }}</p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="{{asset('img/'~ post.postimage ~ '.jpg')}}" alt="">
                 <hr>
                 <p>{{post.postcontent}}</p>
                 <hr>
                 {% endfor %}
-                <div class="well">
+            {% if app.user %}
+                <div class="well">  
                     <h4>Zostaw komentarz:</h4>
-                    <form role="form">
+                    <form role="form" method="post" action="{{path('com_add', {'id': app.request.get('id')}) }}">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea name="content" class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Wyślij</button>
                     </form>
                 </div>
                 <hr>
-
+            {% elseif not app.user %}  
+                <span style="color: red;">komentowanie jest dozwolone tylko dla zalogowanych użytkowników</span>
+            {% endif %}    
         {% for comment in comments %} 
 
                 <div class="media">
                     <div class="media22">
                         <h4 class="media-heading"><span style="color: red;">{{comment.username}}</span>
-                            <small>{{comment.com_date|date('Y-m-d H:i:s')}} </small>
+                            <small>{{comment.com_date|date('Y-m-d')}} </small>
                         </h4>
                         {{ comment.com_content }}
                 </div>

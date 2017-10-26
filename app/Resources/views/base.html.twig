@@ -37,7 +37,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 {{ render(controller('AppBundle:Base:category')) }}
-                ////////////////////////////////////////////////////////
+
                 <div style="float:right;">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <a class="navbar-brand"  href="/profile"> {{ app.user.username|upper }}</a>
@@ -54,7 +54,7 @@
                 <a class="navbar-brand" href="{{ path('fos_user_registration_register') }}">Rejestracja</a>                
             {% endif %}
                 </div>
-                ////////////////////////////////////////////////////////
+
                 
             </div>
             <!-- /.navbar-collapse -->
@@ -93,18 +93,6 @@
                 </div>
 
                 <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>Posty użytkowników</h4>
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                            //tu wpierdolić pętle z loginami użytkowników
-                            
-                            
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
 
                 <!-- Side Widget Well -->
                 <div class="well">

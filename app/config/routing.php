@@ -29,5 +29,11 @@ $collection->add('blog_search', new Route('/search/{id}', array(
     ), array(
     'id' => '\d+'
 )));
+$collection->add('com_add', new Route('/com/{id}', array(
+    '_controller' => 'AppBundle:Comment:add',
+    'id' => 1,
+    ), array(
+    'id' => '\d+'
+)));
 
 return $collection;

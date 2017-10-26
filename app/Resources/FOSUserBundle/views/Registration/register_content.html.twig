@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h1>Zarejestruj się!</h1>
+</br>
+</br>
+<form name="fos_user_registration_form" method="post" action="/register/" class="fos_user_registration_register">
+    <div class="login-container" id="fos_user_registration_form">
+        <div class="form-group row">
+            <label for="fos_user_registration_form_email" class="required">Email</label>
+            <input class="form-control"  type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required">
+        </div>
+        <div class="form-group row">
+            <label for="fos_user_registration_form_username" class="required">Login</label>
+            <input class="form-control"  type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="180" pattern=".{2,}">
+        </div>
+        <div class="form-group row">
+            <label for="fos_user_registration_form_plainPassword_first" class="required">Hasło</label>
+            <input class="form-control"  type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required">
+        </div>
+        <div class="form-group row">
+            <label for="fos_user_registration_form_plainPassword_second" class="required">Powtórz hasło</label>
+            <input class="form-control"  type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required">
+        </div>
+            <input  type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="qjmDvwqTccBpGAv1UhobcGugW-jf3FgLByZQUSSmBRs">
+        <div>
+            </br>
+            </br>
+            <button class="btn btn-primary" type="submit" id="_submit" name="_submit">Zarejestruj</button>
+        </div>    
+    
+    
+    </div>
+        
+
+    </form>

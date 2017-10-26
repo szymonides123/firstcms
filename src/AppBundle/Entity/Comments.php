@@ -91,8 +91,8 @@ class Comments
         return $this->commentid;
     }
 
-    function getUserid(): \AppBundle\Entity\Users {
-        return $this->userid;
+    function getUserid(){
+        return $this->id;
     }
     function setpostid($postid) {
         $this->postid = $postid;
@@ -118,8 +118,8 @@ class Comments
         $this->commentid = $commentid;
     }
 
-    function setUserid(\AppBundle\Entity\Users $userid) {
-        $this->userid = $userid;
+    function setUserid($id) {
+        $this->userid = $id;
     }
 
 
