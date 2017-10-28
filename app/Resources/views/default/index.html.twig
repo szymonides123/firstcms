@@ -15,7 +15,7 @@
         <p class="lead">
             by <span style="color: blue;"> {{post.username}}</span>
         </p>
-        <p><span class="glyphicon glyphicon-time"></span> {{post.postdate|date('Y-m-d H:i:s') }}</p>
+        <p><span class="glyphicon glyphicon-time"></span> {{post.postdate|date('Y-m-d') }}</p>
         <hr>
         <img class="img-responsive" src="{{asset('img/'~ post.postimage ~ '.jpg')}}" alt="">
         <hr>

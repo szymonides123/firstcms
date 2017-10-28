@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Panel Admina</title>
+
+  <!-- Main styles for this application -->
+  <link href="css/style.min.css" rel="stylesheet">
+    {% block stylesheets %}
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
+
+    {% endblock %} 
+</head>
+
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <p class="navbar-text" style="background-color: #e8e8e8; "><span style="margin-left: 40px;">Panel Admina</span></p>
+<div class="app-body">
+    <div class="sidebar">
+         </br>
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('admin_index') }}"><i class="icon-speedometer"></i> Pulpit </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('admin_post') }}"><i class="icon-speedometer"></i> Posty </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('admin_user') }}"><i class="icon-speedometer"></i> Użytkownicy </a>
+          </li>
+        </ul>
+      </nav>
+
+</div>
+
+<main class="main">
+    <div class="container-fluid">
+        {% block body %}
+  
+        {% endblock %}
+    </div>
+</main>
+
+  </div>
+
+<footer class="app-footer">
+    <span>Edited by szymonides</span>
+</footer>
+        {% block javascripts %}
+        <script src={{asset('js/jquery.js')}}></script>
+        <script src={{asset('js/bootstrap.min.js')}}></script>
+
+            
+        {% endblock %}
+</body>
+
+
+
+</html>

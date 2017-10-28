@@ -35,5 +35,17 @@ $collection->add('com_add', new Route('/com/{id}', array(
     ), array(
     'id' => '\d+'
 )));
+$collection->add('admin_index', new Route('/admin', array(
+    '_controller' => 'AppBundle:Admin:index',
+    )
+));
+$collection->add('admin_post', new Route('/aposts', array(
+    '_controller' => 'AppBundle:Admin:post',
+    )
+));
+$collection->add('admin_user', new Route('/ausers', array(
+    '_controller' => 'AppBundle:Admin:user',
+    )
+));
 
 return $collection;
