@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Posts;
+use AppBundle\Entity\Categories;
 use AppBundle\Entity\Comments;
 use AppBundle\Form\PostForm;
 
@@ -34,17 +35,23 @@ class PostController extends Controller
     }
         public function addAction(Request $request)
     {
+        $request = Request::createFromGlobals();
 
+        $categories = $this->getDoctrine()
+                ->getRepository(Categories::class)
+                ->findAll();
+        
         $form = $this->createForm(PostForm::class, $this->post);
         
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+
         $em = $this->getDoctrine()->getManager();
         $this->post->setIsactive(1);
         $this->post->setPostdate(new \DateTime("now"));
         $this->post->setUserid($this->getUser());
-        $this->post->setCategoryid(1);
+        $this->post->setCategoryid($request->get('category'));
         $file = $this->post->getPostimage();
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $file->move(
@@ -61,6 +68,7 @@ class PostController extends Controller
 
         return $this->render('admin/default/posts_edit_add.html.twig', array(
             'form' => $form->createView(),
+            'categories' => $categories
         ));
     }
     

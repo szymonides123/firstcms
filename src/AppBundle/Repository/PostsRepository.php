@@ -79,7 +79,7 @@ class PostsRepository extends EntityRepository
         $from = $id*$limit; 
         $em = $this->getEntityManager();
         $connection = $em->getConnection();
-        $statement = $connection->prepare('SELECT * FROM posts p JOIN categories c ON p.categoryid = c.categoryid JOIN fos_user u ON p.userid = u.id WHERE p.categoryid = :id' );
+        $statement = $connection->prepare('SELECT * FROM posts p JOIN categories c ON p.categoryid = c.categoryid JOIN fos_user u ON p.userid = u.id WHERE p.categoryid = :id ORDER BY postdate DESC' );
         $statement->bindValue(':id',$id ,"integer");
         $statement->execute();
         $limitpost = $statement->fetchAll();
