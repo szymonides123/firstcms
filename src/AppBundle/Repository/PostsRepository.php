@@ -99,4 +99,16 @@ class PostsRepository extends EntityRepository
         return $postnumber;
         
     }
+    
+        public function delPostById($id)
+    {   
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('DELETE FROM posts WHERE postid = :id');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        
+        return ;
+   
+    }
 }

@@ -60,4 +60,13 @@ $collection->add('post_add', new Route('/add/post', array(
     )
 ));
 
+$collection->add('post_del', new Route('/del/post/{id}', array(
+    '_controller' => 'AppBundle:Post:delete',
+    ), array(
+    'id' => '\d+',
+
+)));
+
+
+
 return $collection;

@@ -9,7 +9,7 @@
         <tr>
             <td>{{post.username}}</td><td>{{post.posttitle}}</td><td>{{post.postdate|date('Y-m-d') }}</td><td>{{post.postcontent}}</td>
             <td><a class="btn btn-primary" href="#" >Edytuj</a></td>
-            <td><a class="btn btn-primary" href="#" >Usuń</a></td>          
+            <td><a class="btn btn-primary" href="{{path('post_del',{'id': post.postid}) }}" >Usuń</a></td>          
         </tr>
         {% endfor %}
 </table>

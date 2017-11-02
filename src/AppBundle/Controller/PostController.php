@@ -54,18 +54,22 @@ class PostController extends Controller
         $this->post->setPostimage($fileName);
         $em->persist($this->post);
         $em->flush();
-        
-        
-        
+
         return $this->redirect($this->generateUrl(
             'admin_post'));
-        
         }
-        
-        
+
         return $this->render('admin/default/posts_edit_add.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+    
+        public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $post=$em->getRepository('AppBundle:Posts')->delPostById($id);
+        
+        return $this->redirectToRoute('admin_post');
     }
 }
 
