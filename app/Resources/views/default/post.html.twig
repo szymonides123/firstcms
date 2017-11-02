@@ -10,7 +10,7 @@
                     by <a href="#">{{post.username}}</a>
                 </p>
                 <hr>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.postdate|date('Y-m-d H:i:s') }}</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.postdate|date('Y-m-d') }}</p>
                 <hr>
                 <img class="img-responsive" src="{{asset('img/'~ post.postimage ~ '.jpg')}}" alt="">
                 <hr>
@@ -37,6 +37,9 @@
                     <div class="media22">
                         <h4 class="media-heading"><span style="color: red;">{{comment.username}}</span>
                             <small>{{comment.com_date|date('Y-m-d')}} </small>
+                            {% if is_granted('ROLE_ADMIN') %} 
+                                <a href="{{path('com_del', {'postid': app.request.get('id'), 'comid': comment.commentid }) }}">usuń</a>
+                            {% endif %}
                         </h4>
                         {{ comment.com_content }}
                 </div>

@@ -47,5 +47,17 @@ $collection->add('admin_user', new Route('/ausers', array(
     '_controller' => 'AppBundle:Admin:user',
     )
 ));
+$collection->add('com_del', new Route('/delcom/{postid}/{comid}', array(
+    '_controller' => 'AppBundle:Comment:delete',
+    'postid' => 1,
+    'comid' => 1,
+    ), array(
+    'postid' => '\d+',
+    'comid' => '\d+',
+)));
+$collection->add('post_add', new Route('/add/post', array(
+    '_controller' => 'AppBundle:Post:add',
+    )
+));
 
 return $collection;

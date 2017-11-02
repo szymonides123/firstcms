@@ -1,5 +1,7 @@
 {% extends 'admin/layout.html.twig' %}
 
 {% block body %}
-  Tu będzie edycja użytkownika
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
 {% endblock %}

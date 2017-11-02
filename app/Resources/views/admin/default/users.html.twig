@@ -1,5 +1,16 @@
 {% extends 'admin/layout.html.twig' %}
 
 {% block body %}
-  Tu będzie tabela z użytkownikami
+  <table class="table table-hover" style="margin-top: 100px;"><tr>
+        <th>Login</th><th>Rola</th><th>Aktywny?</th><th>Edytuj</th><th>Dezaktywuj</th>
+        {% for user in users %}
+    </tr>
+        <tr>
+            <td>{{user.username}}</td><td>{{user.roles}}</td><td>{{user.enabled}}</td>
+            <td><a class="btn btn-primary" href="#" >Edytuj</a></td>
+            <td><a class="btn btn-primary" href="#" >Dezaktywuj</a></td>          
+        </tr>
+        {% endfor %}
+        
+</table>
 {% endblock %}

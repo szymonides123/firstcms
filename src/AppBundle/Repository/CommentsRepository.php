@@ -22,4 +22,16 @@ class CommentsRepository extends EntityRepository
         return $comments;
    
     }
+    
+        public function delCommentsBycomId($id)
+    {   
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('DELETE FROM comments WHERE commentid = :id');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        
+        return ;
+   
+    }
 }

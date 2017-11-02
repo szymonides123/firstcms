@@ -1,5 +1,16 @@
 {% extends 'admin/layout.html.twig' %}
 
 {% block body %}
-  Tu będzie tabela z postami
+    
+<table class="table table-hover" style="margin-top: 100px;"><tr>
+        <th>Autor</th><th>Tutuł</th><th>Data</th><th>Treść</th><th>Edytuj</th><th>Usuń</th>
+    {% for post in posts %}
+    </tr>
+        <tr>
+            <td>{{post.username}}</td><td>{{post.posttitle}}</td><td>{{post.postdate|date('Y-m-d') }}</td><td>{{post.postcontent}}</td>
+            <td><a class="btn btn-primary" href="#" >Edytuj</a></td>
+            <td><a class="btn btn-primary" href="#" >Usuń</a></td>          
+        </tr>
+        {% endfor %}
+</table>
 {% endblock %}

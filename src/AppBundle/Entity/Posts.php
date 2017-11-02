@@ -52,27 +52,20 @@ class Posts
      *
      * @ORM\Column(name="postid", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue
      */
+    
     private $postid;
 
     /**
-     * @var \AppBundle\Entity\Categories
+     * @var integer
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Categories")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categoryid", referencedColumnName="categoryid")
-     * })
+     * @ORM\Column(name="categoryid", type="integer", nullable=true)
      */
+    
     private $categoryid;
 
     /**
-     * @var \AppBundle\Entity\User
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="userid", referencedColumnName="id")
@@ -80,31 +73,7 @@ class Posts
      */
     private $userid;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tags", inversedBy="postsPostid")
-     * @ORM\JoinTable(name="posts_has_tags",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="posts_postid", referencedColumnName="postid"),
-     *     @ORM\JoinColumn(name="posts_categoryid", referencedColumnName="categoryid"),
-     *     @ORM\JoinColumn(name="posts_userid", referencedColumnName="userid")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="tags_tagid", referencedColumnName="tagid")
-     *   }
-     * )
-     */
-    private $tagsTagid;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tagsTagid = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
     function getPosttitle() {
         return $this->posttitle;
     }
@@ -129,16 +98,12 @@ class Posts
         return $this->postid;
     }
 
-    function getCategoryid(): \AppBundle\Entity\Categories {
+    function getCategoryid(){
         return $this->categoryid;
     }
 
-    function getUserid(): \AppBundle\Entity\User {
+    function getUserid(){
         return $this->id;
-    }
-
-    function getTagsTagid(): \Doctrine\Common\Collections\Collection {
-        return $this->tagsTagid;
     }
 
 
@@ -166,17 +131,15 @@ class Posts
         $this->postid = $postid;
     }
 
-    function setCategoryid(\AppBundle\Entity\Categories $categoryid) {
+    function setCategoryid($categoryid) {
         $this->categoryid = $categoryid;
     }
 
-    function setUserid(\AppBundle\Entity\Users $userid) {
-        $this->id = $userid;
+    function setUserid($id) {
+        $this->userid = $id;
     }
 
-    function setTagsTagid(\Doctrine\Common\Collections\Collection $tagsTagid) {
-        $this->tagsTagid = $tagsTagid;
-    }
+
 
 
 }

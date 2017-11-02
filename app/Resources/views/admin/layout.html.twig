@@ -1,3 +1,4 @@
+{% if is_granted('ROLE_ADMIN') %} 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,18 +8,21 @@
   <title>Panel Admina</title>
 
   <!-- Main styles for this application -->
-  <link href="css/style.min.css" rel="stylesheet">
+  
     {% block stylesheets %}
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
-
+    <link href="{{asset('css/style.min.css')}}" rel="stylesheet">
     {% endblock %} 
 </head>
 
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-    <p class="navbar-text" style="background-color: #e8e8e8; "><span style="margin-left: 40px;">Panel Admina</span></p>
+    <p class="navbar-text sticky-top" style="background-color: #e8e8e8; "><span style="margin-left: 40px;font-size: 24px;">Panel Admina</span>
+    <a href="{{path('post_add')}}" class="btn btn-info" role="button" style="margin-left: 50px;">Dodaj nowy post</a>
+    <a href="{{path('blog_index')}}" class="btn btn-info" role="button" style="margin-left: 50px;">Wróć na bloga</a>
+    </p>
 <div class="app-body">
     <div class="sidebar">
          </br>
@@ -62,3 +66,4 @@
 
 
 </html>
+{% endif %}

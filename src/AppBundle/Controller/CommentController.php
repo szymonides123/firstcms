@@ -13,8 +13,6 @@ class CommentController extends Controller
     
     public function addAction(Request $request, $id)
     {   
-
-       
         $request = Request::createFromGlobals();
         $em = $this->getDoctrine()->getManager();
         $comment = new Comments;
@@ -27,13 +25,20 @@ class CommentController extends Controller
         $em->persist($comment);
         $em->flush();
         $response = $this->forward('AppBundle:Post:index', array(
-        'id'  => $id,
-            
-        
-    ));
-    
+        'id'  => $id, ));
         return $response;
     }
     
+    public function deleteAction(Request $request, $postid, $comid)
+    {
+        
+        $comments = $this->getDoctrine()
+                ->getRepository(Comments::class)
+                ->delCommentsBycomId($comid);
+        
+        $response = $this->forward('AppBundle:Post:index', array(
+        'id'  => $postid, ));
+        return $response;
+    }
 
 }

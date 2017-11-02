@@ -17,7 +17,7 @@
         </p>
         <p><span class="glyphicon glyphicon-time"></span> {{post.postdate|date('Y-m-d') }}</p>
         <hr>
-        <img class="img-responsive" src="{{asset('img/'~ post.postimage ~ '.jpg')}}" alt="">
+        <img class="img-responsive" src="{{asset('img/'~ post.postimage)}}" alt="">
         <hr>
         <div class="last-line">
             {{post.postcontent}}

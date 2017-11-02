@@ -66,8 +66,7 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
+    transport: gmail
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
@@ -79,3 +78,5 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+        
+
