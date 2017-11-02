@@ -20,7 +20,7 @@
         <img class="img-responsive" src="{{asset('img/'~ post.postimage)}}" alt="">
         <hr>
         <div class="last-line">
-            {{post.postcontent}}
+            {% autoescape %}{{post.postcontent | raw }}{% endautoescape %}
         </div>
         <a class="btn btn-primary" href="{{path('blog_post',{'id': post.postid }) }}">Czytaj więcej <span class="glyphicon glyphicon-chevron-right"></span></a>
 

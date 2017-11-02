@@ -12,9 +12,9 @@
                 <hr>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.postdate|date('Y-m-d') }}</p>
                 <hr>
-                <img class="img-responsive" src="{{asset('img/'~ post.postimage ~ '.jpg')}}" alt="">
+                <img class="img-responsive" src="{{asset('img/'~ post.postimage)}}" alt="">
                 <hr>
-                <p>{{post.postcontent}}</p>
+                {% autoescape %}{{post.postcontent | raw }}{% endautoescape %}
                 <hr>
                 {% endfor %}
             {% if app.user %}
