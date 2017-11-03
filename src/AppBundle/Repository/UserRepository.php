@@ -19,4 +19,17 @@ class UserRepository extends EntityRepository
         
         return $user;    
     }
+    
+    public function dezactivateuser($id, $value)
+    {
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('UPDATE fos_user SET enabled = :value WHERE id =:id ');
+        $statement->bindValue(':value',$value ,"integer");
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        
+        
+        return;    
+    }
 }

@@ -72,7 +72,19 @@ $collection->add('post_edit', new Route('/edit/post/{id}', array(
     'id' => '\d+',
 
 )));
+$collection->add('user_dezactivate', new Route('/user/dez/{id}', array(
+    '_controller' => 'AppBundle:User:dezactivate',
+    ), array(
+    'id' => '\d+',
 
+)));
+
+$collection->add('user_activate', new Route('/user/act/{id}', array(
+    '_controller' => 'AppBundle:User:activate',
+    ), array(
+    'id' => '\d+',
+
+)));
 
 
 
