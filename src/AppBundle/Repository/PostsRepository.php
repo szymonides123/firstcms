@@ -111,4 +111,21 @@ class PostsRepository extends EntityRepository
         return ;
    
     }
+    
+    public function updatepost($id, $catid, $userid, $posttitle, $postcontent, $postimage)
+    {
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('UPDATE posts SET categoryid = :catid, userid = :userid, posttitle = :posttitle, postcontent = :postcontent, postimage = :postimage, isactive=1 WHERE postid = :id');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->bindValue(':catid',$catid ,"integer");
+        $statement->bindValue(':userid',$userid ,"integer");
+        $statement->bindValue(':posttitle',$posttitle ,"text");
+        $statement->bindValue(':postcontent',$postcontent ,"text");
+        $statement->bindValue(':postimage',$postimage ,"text");
+        $statement->execute();
+
+        
+        return;    
+    }
 }

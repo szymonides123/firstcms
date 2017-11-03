@@ -79,5 +79,42 @@ class PostController extends Controller
         
         return $this->redirectToRoute('admin_post');
     }
+
+
+        public function editAction(Request $request, $id)
+    {
+
+            $post = $this->getDoctrine()
+                ->getRepository(Posts::class)
+                ->find($id);
+            $categories = $this->getDoctrine()
+                ->getRepository(Categories::class)
+                ->findAll();
+            $form = $this->createForm(PostForm::class, $this->post);
+            
+            $form->handleRequest($request);
+            
+            if ($form->isSubmitted() && $form->isValid()) {
+
+        $em = $this->getDoctrine()->getManager();
+        $file = $this->post->getPostimage();
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $file->move(
+                $this->getParameter('img_dir'),
+                $fileName
+            );
+        $em->getRepository('AppBundle:Posts')->updatepost($id, $request->get('category'), $this->getUser()->getId(), $_POST['post_form']['posttitle'], $_POST['post_form']['postcontent'] , $fileName);
+        
+        return $this->redirectToRoute('admin_post');
+
+            }
+        
+        return $this->render('admin/default/posts_edit_add.html.twig', array(
+            'form' => $form->createView(),
+            'categories' => $categories,
+            'posts' => $post
+        ));
+    }
 }
+
 

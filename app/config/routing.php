@@ -66,6 +66,13 @@ $collection->add('post_del', new Route('/del/post/{id}', array(
     'id' => '\d+',
 
 )));
+$collection->add('post_edit', new Route('/edit/post/{id}', array(
+    '_controller' => 'AppBundle:Post:edit',
+    ), array(
+    'id' => '\d+',
+
+)));
+
 
 
 

@@ -2,15 +2,15 @@
 
 {% block body %}
     
-<table class="table table-hover" style="margin-top: 100px;"><tr>
+<table class="table table-hover" style="margin-top: 50px;"><tr>
         <th>Autor</th><th>Tutuł</th><th>Data</th><th>Treść</th><th>Edytuj</th><th>Usuń</th>
     {% for post in posts %}
     </tr>
         <tr>
             <td>{{post.username}}</td><td>{{post.posttitle}}</td><td>{{post.postdate|date('Y-m-d') }}</td><td>{{post.postcontent}}</td>
-            <td><a class="btn btn-primary" href="#" >Edytuj</a></td>
+            <td><a class="btn btn-primary" href="{{path('post_edit',{'id': post.postid}) }}" >Edytuj</a></td>
             <td><a class="btn btn-primary" href="{{path('post_del',{'id': post.postid}) }}" >Usuń</a></td>          
         </tr>
-        {% endfor %}
+    {% endfor %}
 </table>
 {% endblock %}
