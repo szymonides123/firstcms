@@ -19,12 +19,5 @@ class BaseController extends Controller
         return $this->render('default/menu.html.twig',
                 array('categories' => $categories));
     }
-    public function usersAction()
-    {
-        $categories = $this->getDoctrine()
-                ->getRepository(Categories::class)
-                ->findAll();
-        return $this->render('default/menu.html.twig',
-                array('categories' => $categories));
-    }
+
 }

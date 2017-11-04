@@ -81,11 +81,14 @@ $collection->add('user_dezactivate', new Route('/user/dez/{id}', array(
 
 $collection->add('user_activate', new Route('/user/act/{id}', array(
     '_controller' => 'AppBundle:User:activate',
-    ), array(
+        ), array(
     'id' => '\d+',
-
 )));
 
-
+$collection->add('user_changerole', new Route('/user/changerole/{id}', array(
+    '_controller' => 'AppBundle:User:changerole',
+    ),array(
+    'id' => '\d+',
+        )));
 
 return $collection;

@@ -1,7 +1,17 @@
 {% extends 'admin/layout.html.twig' %}
 
 {% block body %}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+    <h1>Wybierz role:</h1>
+    <form method="post">
+    {% for user in users %}
+        <input type="hidden" name="username" value="{{user.username}}"/>
+    {% endfor %}    
+        <select name="role">
+            <option value="1">Admin</option>
+            <option value="2">User</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+    </form>
+    
+    
 {% endblock %}

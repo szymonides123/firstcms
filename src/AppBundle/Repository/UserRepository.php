@@ -32,4 +32,28 @@ class UserRepository extends EntityRepository
         
         return;    
     }
+    public function finduser($id)
+    {
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT * FROM fos_user WHERE id = :id ');
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        $user = $statement->fetchAll();
+        
+        return $user;    
+    }
+    public function changerole($id, $value)
+    {
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('UPDATE fos_user SET roles = :value WHERE id =:id ');
+        $statement->bindValue(':value',$value ,"text");
+        $statement->bindValue(':id',$id ,"integer");
+        $statement->execute();
+        
+        
+        return;    
+    }
+    
 }
